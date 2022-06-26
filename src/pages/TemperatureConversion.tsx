@@ -5,6 +5,7 @@ import { Button, Card, Col, Row } from 'antd';
 import styled from 'styled-components';
 
 import TemperatureInput from '../components/TemperatureInput';
+import { Temperature as TP } from '../typescript/Temperature';
 import {
   ABSOLUTE_ZERO_IN_CELCIUS,
   ABSOLUTE_ZERO_IN_FARENHEIT,
@@ -14,12 +15,13 @@ import {
 } from '../utils/temperature';
 
 const Container = styled.div`
+  margin-top: 20px;
   min-height: 80px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-end;
 `;
 
 const DashboardCard = styled(Card)`
@@ -33,7 +35,7 @@ const ClearButton = styled(Button)`
 `;
 
 const SwapIcon = styled(FontAwesomeIcon)`
-  margin-top: 12px;
+  margin-bottom: 76px;
   padding: 0 14px;
 `;
 
@@ -90,10 +92,11 @@ const TemperatureConversion = () => {
 
   return (
     <Row>
-      <Col span={12} offset={6}>
+      <Col lg={{ span: 12, offset: 6 }}>
         <DashboardCard title="Temperature Conversion">
           <Container>
             <TemperatureInput
+              type={TP.CELCIUS}
               className="celcius-input"
               value={celcius}
               addonAfter="°C"
@@ -104,6 +107,7 @@ const TemperatureConversion = () => {
             />
             <SwapIcon icon={faRightLeft} />
             <TemperatureInput
+              type={TP.FARENHEIT}
               className="farenheit-input"
               value={farenheit}
               addonAfter="°F"
