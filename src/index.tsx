@@ -1,17 +1,29 @@
 import React from 'react';
+import { ThemeSwitcherProvider } from 'react-css-theme-switcher';
 import ReactDOM from 'react-dom/client';
+import { Theme } from 'typescript/Theme';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
 
+const themes = {
+  [Theme.LIGHT]: `${process.env.PUBLIC_URL}/light-theme.css`,
+  [Theme.DARK]: `${process.env.PUBLIC_URL}/dark-theme.css`,
+};
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const defaultTheme = localStorage.getItem('theme') || Theme.LIGHT;
+
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeSwitcherProvider themeMap={themes} defaultTheme={defaultTheme}>
+      <App />
+    </ThemeSwitcherProvider>
   </React.StrictMode>
 );
 
