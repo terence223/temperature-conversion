@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/temperature-conversion/static/css/main.5fec7b89.css",
+    "main.css": "/temperature-conversion/static/css/main.31690426.css",
     "main.js": "/temperature-conversion/static/js/main.144b932b.js",
     "static/js/787.703f9ee2.chunk.js": "/temperature-conversion/static/js/787.703f9ee2.chunk.js",
     "index.html": "/temperature-conversion/index.html",
-    "main.5fec7b89.css.map": "/temperature-conversion/static/css/main.5fec7b89.css.map",
+    "main.31690426.css.map": "/temperature-conversion/static/css/main.31690426.css.map",
     "main.144b932b.js.map": "/temperature-conversion/static/js/main.144b932b.js.map",
     "787.703f9ee2.chunk.js.map": "/temperature-conversion/static/js/787.703f9ee2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5fec7b89.css",
+    "static/css/main.31690426.css",
     "static/js/main.144b932b.js"
   ]
 }
