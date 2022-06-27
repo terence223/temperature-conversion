@@ -1,12 +1,10 @@
 import React from 'react';
 import { ThemeSwitcherProvider } from 'react-css-theme-switcher';
 import ReactDOM from 'react-dom/client';
-import { Theme } from 'typescript/Theme';
+import { Theme } from 'types/Theme';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import './index.css';
 
 const themes = {
   [Theme.LIGHT]: `${process.env.PUBLIC_URL}/light-theme.css`,

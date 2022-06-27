@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import Diagram from 'components/Diagram';
 
-import { Temperature as TP } from '../typescript/Temperature';
+import { Temperature as TP } from '../types/Temperature';
 
 const TemperatureInputComponent = styled(Input)`
   margin-top: 20px;

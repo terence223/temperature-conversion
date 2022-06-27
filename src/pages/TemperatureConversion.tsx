@@ -5,7 +5,7 @@ import { Button, Card, Col, Row } from 'antd';
 import styled from 'styled-components';
 
 import TemperatureInput from '../components/TemperatureInput';
-import { Temperature as TP } from '../typescript/Temperature';
+import { Temperature as TP } from '../types/Temperature';
 import {
   ABSOLUTE_ZERO_IN_CELCIUS,
   ABSOLUTE_ZERO_IN_FARENHEIT,

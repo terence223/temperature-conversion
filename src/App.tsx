@@ -4,7 +4,7 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Layout, Switch } from 'antd';
 import styled from 'styled-components';
-import { Theme } from 'typescript/Theme';
+import { Theme } from 'types/Theme';
 
 import TemperatureConversion from './pages/TemperatureConversion';
 

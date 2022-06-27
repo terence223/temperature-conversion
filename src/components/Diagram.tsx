@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 
-import { Temperature as TP } from '../typescript/Temperature';
+import { Temperature as TP } from '../types/Temperature';
 import debounce from '../utils/debounce';
 import {
   ABSOLUTE_ZERO_IN_CELCIUS,
