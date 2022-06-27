@@ -4,6 +4,7 @@
 
 ## How to run
 
+Please make sure you are using right version of node. I suggest to use 14.17.0
 ### `yarn install`
 
 install all necessary plugin
@@ -46,7 +47,7 @@ No need to do server side rendering, so I chose [Create React App](https://creat
 * `App.tsx` is the basic layout of page
 * `pages` is the web pages files
 * `components` is those reusable components
-* `typescript` is for the typescript definition of some variables
+* `types` is for the typescript definition of variables
 * `utils` is the constants and functions which can be reused
 * `themes` is the basic css at less files of Dark and Light mode
 
