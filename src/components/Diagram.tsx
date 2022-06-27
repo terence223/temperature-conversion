@@ -18,12 +18,11 @@ const Diagram = ({ value, type }: { value: string; type: TP }) => {
   const [start, setStart] = useState<number>();
   const [end, setEnd] = useState<number>();
 
-  const color = type === TP.CELCIUS ? '#2980B9' : '#C0392B';
-  const unit = type === TP.CELCIUS ? '°C' : '°F';
-  const min: number = TP.CELCIUS
-    ? ABSOLUTE_ZERO_IN_CELCIUS
-    : ABSOLUTE_ZERO_IN_FARENHEIT;
-  const max: number = TP.CELCIUS ? MAX_FOR_CELCIUS : MAX_FOR_FARENHEIT;
+  const color: string = type === TP.CELCIUS ? '#2980B9' : '#C0392B';
+  const unit: string = type === TP.CELCIUS ? '°C' : '°F';
+  const min: number =
+    type === TP.CELCIUS ? ABSOLUTE_ZERO_IN_CELCIUS : ABSOLUTE_ZERO_IN_FARENHEIT;
+  const max: number = type === TP.CELCIUS ? MAX_FOR_CELCIUS : MAX_FOR_FARENHEIT;
   const nowValue = parseFloat(value);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,7 +38,7 @@ const Diagram = ({ value, type }: { value: string; type: TP }) => {
           : Math.round(((val - min) / (max - min)) * 100);
       });
     }, 500),
-    [type]
+    [end, max, min]
   );
 
   useEffect(() => {
