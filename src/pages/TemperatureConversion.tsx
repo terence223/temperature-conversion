@@ -47,6 +47,8 @@ const TemperatureConversion = () => {
   const [celcius, setCelcius] = useState<string>('');
   const [farenheit, setFarenheit] = useState<string>('');
 
+  const errorMessageForLowerThanAbsoluteZero = 'Lower than absolute zero';
+
   const isCelciusLowerLimit: boolean =
     !!celcius && parseFloat(celcius) < ABSOLUTE_ZERO_IN_CELCIUS;
 
@@ -101,7 +103,7 @@ const TemperatureConversion = () => {
               value={celcius}
               addonAfter="°C"
               errorMessage={
-                isCelciusLowerLimit ? 'Lower than absolute zero' : ''
+                isCelciusLowerLimit ? errorMessageForLowerThanAbsoluteZero : ''
               }
               handleChange={handleCelciusInput}
             />
@@ -112,7 +114,9 @@ const TemperatureConversion = () => {
               value={farenheit}
               addonAfter="°F"
               errorMessage={
-                isFarenheitLowerLimit ? 'Lower than absolute zero' : ''
+                isFarenheitLowerLimit
+                  ? errorMessageForLowerThanAbsoluteZero
+                  : ''
               }
               handleChange={handleFarenheitInput}
             />

@@ -1,3 +1,4 @@
+// Farenheit and Celcius components. It shows error message if temperature is lower than absolute zero
 import { FC } from 'react';
 import { Input } from 'antd';
 import styled from 'styled-components';

@@ -8,8 +8,6 @@ import { Theme } from 'typescript/Theme';
 
 import TemperatureConversion from './pages/TemperatureConversion';
 
-import './App.css';
-
 const { Header, Content } = Layout;
 
 const AppLayout = styled(Layout)`
