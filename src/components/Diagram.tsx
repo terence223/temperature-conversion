@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 
 import { Temperature as TP } from '../types/Temperature';
@@ -15,8 +15,7 @@ const MAX_FOR_CELCIUS = 1000;
 const MAX_FOR_FARENHEIT = 1500;
 
 const Diagram = ({ value, type }: { value: string; type: TP }) => {
-  const [start, setStart] = useState<number>();
-  const [end, setEnd] = useState<number>();
+  const [pathValue, setPathValue] = useState<number>(0);
 
   const color: string = type === TP.CELCIUS ? '#2980B9' : '#C0392B';
   const unit: string = type === TP.CELCIUS ? '°C' : '°F';
@@ -26,63 +25,39 @@ const Diagram = ({ value, type }: { value: string; type: TP }) => {
   const nowValue = parseFloat(value);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const refreshStartAndEnd = useCallback(
+  const refreshPathValue = useCallback(
     debounce((val: number) => {
-      setStart(() => {
-        return end === undefined ? 0 : end;
-      });
-
-      setEnd(() => {
+      setPathValue(() => {
         return Number.isNaN(val)
           ? 0
           : Math.round(((val - min) / (max - min)) * 100);
       });
     }, 500),
-    [end, max, min]
+    [max, min]
   );
 
   useEffect(() => {
-    refreshStartAndEnd(nowValue);
-  }, [nowValue, refreshStartAndEnd]);
+    refreshPathValue(nowValue);
+  }, [nowValue, refreshPathValue]);
 
   return (
-    <ProgressProvider
-      valueStart={start === undefined ? 0 : start}
-      valueEnd={end === undefined ? 0 : end}
-    >
-      {(pathValue: number) => (
-        <CircularProgressbar
-          counterClockwise={type === TP.FARENHEIT}
-          value={pathValue}
-          text={Number.isNaN(nowValue) ? unit : `${nowValue}${unit}`}
-          styles={{
-            path: {
-              stroke: color,
-              transform: 'rotate(0.5turn)',
-              transformOrigin: 'center center',
-            },
-            text: {
-              fill: color,
-              fontSize: '14px',
-            },
-          }}
-        />
-      )}
-    </ProgressProvider>
+    <CircularProgressbar
+      counterClockwise={type === TP.FARENHEIT}
+      value={pathValue}
+      text={Number.isNaN(nowValue) ? unit : `${nowValue}${unit}`}
+      styles={{
+        path: {
+          stroke: color,
+          transform: 'rotate(0.5turn)',
+          transformOrigin: 'center center',
+        },
+        text: {
+          fill: color,
+          fontSize: '14px',
+        },
+      }}
+    />
   );
-};
-
-const ProgressProvider: FC<{
-  valueStart: number;
-  valueEnd: number;
-  children: (value: number) => JSX.Element;
-}> = ({ valueStart, valueEnd, children }) => {
-  const [value, setValue] = useState<number>(valueStart);
-  useEffect(() => {
-    setValue(valueEnd);
-  }, [valueEnd]);
-
-  return children(value);
 };
 
 export default Diagram;
